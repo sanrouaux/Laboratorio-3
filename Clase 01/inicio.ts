@@ -1,3 +1,3 @@
-var nombre : string = "Emiliano";
+var Nombre : string = "Emiliano";
 var apellido : string = "Medina";
-console.log(nombre + " " + apellido);
+console.log(Nombre + " " + apellido);

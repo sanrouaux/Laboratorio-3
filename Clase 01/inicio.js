@@ -1,5 +1,5 @@
 "use strict";
-var nombre = "Emiliano";
+var Nombre = "Emiliano";
 var apellido = "Medina";
-console.log(nombre + " " + apellido);
+console.log(Nombre + " " + apellido);
 //# sourceMappingURL=inicio.js.map
