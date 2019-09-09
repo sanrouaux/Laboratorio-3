@@ -1,10 +1,11 @@
 if(localStorage.getItem("Empleados") == null)
 {
-  localStorage.setItem("Empleados", "Juan-123, Rosa-456, Carlos-666");
+  localStorage.setItem("Empleados", "Juan-123,Rosa-456,Carlos-666");
 }
 
 function Loguear()
 {
+  
   var bandera = 0;
 
   var nombre : string = (<HTMLTextAreaElement>document.getElementById("txtNombre")).value;
@@ -14,10 +15,10 @@ function Loguear()
 
   if(todosEmpleados != null)
   {
-    var arrayEmpleados = todosEmpleados.split(",");
+    var arrayEmpleados : string[] = todosEmpleados.split(",");
     for(let i = 0; i < arrayEmpleados.length; i++)
     {
-      var emp = arrayEmpleados[i].split("-");
+      var emp : string [] = arrayEmpleados[i].split("-");
 
       if(emp[0] == nombre && emp[1] == legajo)
       {

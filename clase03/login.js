@@ -1,6 +1,6 @@
 "use strict";
 if (localStorage.getItem("Empleados") == null) {
-    localStorage.setItem("Empleados", "Juan-123, Rosa-456, Carlos-666");
+    localStorage.setItem("Empleados", "Juan-123,Rosa-456,Carlos-666");
 }
 function Loguear() {
     var bandera = 0;
