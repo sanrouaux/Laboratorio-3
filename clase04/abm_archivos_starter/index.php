@@ -15,8 +15,8 @@ $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 
 	<!-- incluir archivos javascript aquí -->
 	<script type="text/javascript" src="Javascript/carga_lista.js"></script>
-
 </head>
+
 <body>
 	<div class="container">
 		<div class="page-header">

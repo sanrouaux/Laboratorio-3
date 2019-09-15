@@ -2,9 +2,12 @@
 
 if(isset($_SESSION["usuario"]) && $_SESSION["usuario"] == "OK")
 {
-
+    echo "OK";
 }
 else
-{
-    header("location:login.php");
+{ 
+    echo "NO-OK";   
+    //header("location:login.php");        
 }
+
+?>
