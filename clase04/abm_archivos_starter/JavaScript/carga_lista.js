@@ -9,7 +9,6 @@ window.onload = function () {
     http.onreadystatechange = function () {
         if (http.status == 200 && http.readyState == 4) {
             if (http.response == "OK") {
-                //(<HTMLDivElement>document.getElementById("divGrilla")).innerHTML = http.response; 
                 cargarGrilla();
                 //window.location.href = "login.php";
             }

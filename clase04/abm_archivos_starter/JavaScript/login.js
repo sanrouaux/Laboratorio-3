@@ -7,7 +7,8 @@ function Login() {
     httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     httpRequest.send("user=" + user + "&password=" + password);
     httpRequest.onreadystatechange = function () {
-        alert(httpRequest.response);
-        window.location.href = "index.php";
+        if (httpRequest.response == "OK") {
+            window.location.href = "index.php";
+        }
     };
 }

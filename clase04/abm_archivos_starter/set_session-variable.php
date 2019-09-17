@@ -1,12 +1,11 @@
 <?php
+session_start();
 
-$user = $_POST["user"];
-$password = $_POST["password"];
+$user = "santiago";
+$password = "1234";
 
-$userOk = "santiago";
-$pwOk = "1234";
-
-if($user == $userOk && $pwOk == $password)
+if($_POST["user"] == $user && $_POST["password"] == $password)
 {
     $_SESSION["usuario"] = "OK";
+    echo "OK";
 }
