@@ -12,8 +12,7 @@ window.onload = () =>
         {
             if(http.response == "OK")
             {              
-                cargarGrilla(); 
-                //window.location.href = "login.php";
+                cargarGrilla();
             }
             else
             {
@@ -25,14 +24,14 @@ window.onload = () =>
 
 function cargarGrilla()
 {
-  var http = new XMLHttpRequest();
-  http.open("POST", "./administracion.php", true);
-  http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  http.send("queHago=mostrarGrilla");
-  http.onreadystatechange = () => {
-    if(http.status == 200 && http.readyState == 4)
+  var httpAd = new XMLHttpRequest();
+  httpAd.open("POST", "./administracion.php", true);
+  httpAd.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  httpAd.send("queHago=mostrarGrilla");
+  httpAd.onreadystatechange = () => {
+    if(httpAd.status == 200 && httpAd.readyState == 4)
     {
-        (<HTMLDivElement>document.getElementById("divGrilla")).innerHTML = http.response;        
+        (<HTMLDivElement>document.getElementById("divGrilla")).innerHTML = httpAd.response;        
     }
   }
 }

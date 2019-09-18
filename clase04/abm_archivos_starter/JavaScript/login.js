@@ -7,8 +7,13 @@ function Login() {
     httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     httpRequest.send("user=" + user + "&password=" + password);
     httpRequest.onreadystatechange = function () {
-        if (httpRequest.response == "OK") {
-            window.location.href = "index.php";
+        if (httpRequest.status == 200 && httpRequest.readyState == 4) {
+            if (httpRequest.response == "OK") {
+                window.location.href = "index.php";
+            }
+            else {
+                alert("Usuario o contraseña incorrectos");
+            }
         }
     };
 }
