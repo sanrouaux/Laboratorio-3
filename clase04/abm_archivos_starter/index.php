@@ -15,6 +15,7 @@ $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 
 	<!-- incluir archivos javascript aquí -->
 	<script type="text/javascript" src="Javascript/carga_lista.js"></script>
+	<script type="text/javascript" src="Javascript/Main.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@ $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 									<input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre" />
 									<input type="file" name="archivo" id="archivo" /> 
 									
-									<input type="button" class="MiBotonUTN" onclick="Main.AgregarProducto()" value="Guardar"  />
+									<input type="button" class="MiBotonUTN" onclick="AgregarProducto()" value="Guardar"  />
 									<input type="hidden" id="hdnQueHago" name="queHago" value="agregar" />
 								</form>
 							</div>

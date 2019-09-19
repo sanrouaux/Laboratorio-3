@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_SESSION["usuario"]) && $_SESSION["usuario"] == "OK")
 {
-    echo "OK";
+    echo "ok";
 }
 else
 { 

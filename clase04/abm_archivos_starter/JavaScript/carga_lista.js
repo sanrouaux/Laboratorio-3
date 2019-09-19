@@ -8,7 +8,7 @@ window.onload = function () {
     http.send("");
     http.onreadystatechange = function () {
         if (http.status == 200 && http.readyState == 4) {
-            if (http.response == "OK") {
+            if (http.response == "ok") {
                 cargarGrilla();
             }
             else {

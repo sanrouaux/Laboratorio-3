@@ -8,7 +8,7 @@ function Login() {
     httpRequest.send("user=" + user + "&password=" + password);
     httpRequest.onreadystatechange = function () {
         if (httpRequest.status == 200 && httpRequest.readyState == 4) {
-            if (httpRequest.response == "OK") {
+            if (httpRequest.response == "ok") {
                 window.location.href = "index.php";
             }
             else {

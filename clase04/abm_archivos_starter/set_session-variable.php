@@ -7,7 +7,7 @@ $password = "1234";
 if($_POST["user"] == $user && $_POST["password"] == $password)
 {
     $_SESSION["usuario"] = "OK";
-    echo "OK";
+    echo "ok";
 }
 else
 {

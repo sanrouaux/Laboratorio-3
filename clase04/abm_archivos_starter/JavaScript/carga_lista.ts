@@ -10,7 +10,7 @@ window.onload = () =>
     http.onreadystatechange = () => {
     if(http.status == 200 && http.readyState == 4)
         {
-            if(http.response == "OK")
+            if(http.response == "ok")
             {              
                 cargarGrilla();
             }

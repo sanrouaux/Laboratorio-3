@@ -17,6 +17,7 @@ switch($queHago){
 							<th>  COD. BARRA </th>
 							<th>  NOMBRE     </th>
 							<th>  FOTO       </th>
+							<th>  ACCION       </th>
 						</tr>  
 					</thead>';   	
 //AGREGAR COLUMNA 'ACCION'
@@ -26,6 +27,7 @@ switch($queHago){
 							<td>".$prod->GetCodBarra()."</td>
 							<td>".$prod->GetNombre()."</td>
 							<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
+							<td><input type='button' class='MiBotonUTN' value='Eliminar' /><input type='button' class='MiBotonUTN' value='Modificar' /></td>
 						</tr>";
 //AGREGAR UNA COLUMNA CON DOS 'BUTTONS' (ELIMINAR Y MODIFICAR)						
 		}
