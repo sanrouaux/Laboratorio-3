@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script type="text/javascript">
+    
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "./json_test.php", true);
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax.send();
+        ajax.onreadystatechange = () => {
+          if(ajax.status == 200 && ajax.readyState == 4)
+          {
+              var arrayJSON = JSON.parse(ajax.responseText);
+
+              var tabla = "<table width='100%' border='1'> \
+                                <theader> \
+                                    <td><h1>ID</h1></td> \
+                                    <td><h1>Marca</h1></td> \
+                                    <td><h1>Precio</h1></td> \
+                                    <td><h1>Color</h1></td> \
+                                    <td><h1>Modelo</h1></td> \
+                                    <td><h1>Acciones</h1></td> \
+                                </theader>";
+
+              for(let i = 0; i < arrayJSON.length; i++)
+              { 
+                tabla += "<tr> \
+                            <td>"+arrayJSON[i].Id+"</td> \
+                            <td>"+arrayJSON[i].Marca+"</td> \
+                            <td>"+arrayJSON[i].Precio+"</td> \
+                            <td>"+arrayJSON[i].Color+"</td> \
+                            <td>"+arrayJSON[i].Modelo+"</td> \
+                            <td><input type='button' onclick='VerAuto("+JSON.stringify(arrayJSON[i])+")' value='Ver Auto'/></td> \
+                        </tr>";
+              }    
+              tabla += "</table>";
+
+              document.write(tabla);
+          }
+        }
+
+        function VerAuto(objAuto)
+        {
+            console.log("ID: " + objAuto.Id + " - Marca: " + objAuto.Marca + " - Precio: " + objAuto.Precio + " - Color: " + objAuto.Color + " - Modelo: " + objAuto.Modelo);
+        }
+    
+      </script>
+</head>
+<body>
+    
+</body>
+</html>
