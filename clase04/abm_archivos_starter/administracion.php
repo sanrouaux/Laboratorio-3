@@ -1,5 +1,5 @@
 <?php
-include_once("verificacion.php");
+
 require_once ("clases/producto.php");
 require_once ("clases/archivo.php");
 
@@ -8,7 +8,7 @@ $queHago = isset($_POST['queHago']) ? $_POST['queHago'] : NULL;
 switch($queHago){
 
 	case "mostrarGrilla":
-	
+
 		$ArrayDeProductos = Producto::TraerTodosLosProductos();
 
 		$grilla = '<table class="table">
@@ -18,26 +18,26 @@ switch($queHago){
 							<th>  NOMBRE     </th>
 							<th>  FOTO       </th>
 							<th>  ACCION       </th>
-						</tr>  
-					</thead>';   	
+						</tr>
+					</thead>';
 //AGREGAR COLUMNA 'ACCION'
 		foreach ($ArrayDeProductos as $prod){
-		
+
 			$grilla .= "<tr>
 							<td>".$prod->GetCodBarra()."</td>
 							<td>".$prod->GetNombre()."</td>
 							<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
 							<td><input type='button' class='MiBotonUTN' value='Eliminar' /><input type='button' class='MiBotonUTN' value='Modificar' /></td>
 						</tr>";
-//AGREGAR UNA COLUMNA CON DOS 'BUTTONS' (ELIMINAR Y MODIFICAR)						
+//AGREGAR UNA COLUMNA CON DOS 'BUTTONS' (ELIMINAR Y MODIFICAR)
 		}
-		
-		$grilla .= '</table>';		
-		
+
+		$grilla .= '</table>';
+
 		echo $grilla;
-		
+
 		break;
-		
+
 	case "agregar":
 	case "modificar":
 
@@ -53,7 +53,7 @@ switch($queHago){
 		$archivo = $res["PathTemporal"];
 
 		$p = new Producto($codBarra, $nombre, $archivo);
-		
+
 		if($queHago === "agregar"){
 			if(!Producto::Guardar($p)){
 				echo "Error al generar archivo";
@@ -69,23 +69,23 @@ switch($queHago){
 		}
 
 		header("Location:./index.php");
-		
+
 		break;
-	
+
 	case "eliminar":
 		$codBarra = isset($_POST['codBarra']) ? $_POST['codBarra'] : NULL;
-	
+
 		if(!Producto::Eliminar($codBarra)){
 			$mensaje = "Lamentablemente ocurrio un error y no se pudo escribir en el archivo.";
 		}
 		else{
 			$mensaje = "El archivo fue escrito correctamente. PRODUCTO eliminado CORRECTAMENTE!!!";
 		}
-	
+
 		echo $mensaje;
-		
+
 		break;
-		
+
 	default:
 		echo ":(";
 }

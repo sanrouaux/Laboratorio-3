@@ -1,4 +1,5 @@
 <?php
+include_once("verificacion.php");
 require_once("clases\producto.php");
 $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 ?>
@@ -6,11 +7,11 @@ $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 <html>
 <head>
 	<title> <?php echo $tituloVentana; ?> </title>
-	  
+
 	<link href="./img/utnLogo.png" rel="icon" type="image/png" />
 
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="animacion.css">		
+	<link rel="stylesheet" type="text/css" href="animacion.css">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 
 	<!-- incluir archivos javascript aquí -->
@@ -21,7 +22,7 @@ $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 <body>
 	<div class="container">
 		<div class="page-header">
-			<h1>PRODUCTOS</h1>      
+			<h1>PRODUCTOS</h1>
 		</div>
 		<div class="CajaInicio animated bounceInRight" style="width:1100px">
 			<h1>Ejemplo ABM-LISTADO - con archivos y AJAX - </h1>
@@ -33,8 +34,8 @@ $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 								<form id="frm" enctype="multipart/form-data" >
 									<input type="text" name="codBarra" id="codBarra" placeholder="Ingrese c&oacute;digo de barras" />
 									<input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre" />
-									<input type="file" name="archivo" id="archivo" /> 
-									
+									<input type="file" name="archivo" id="archivo" />
+
 									<input type="button" class="MiBotonUTN" onclick="AgregarProducto()" value="Guardar"  />
 									<input type="hidden" id="hdnQueHago" name="queHago" value="agregar" />
 								</form>
@@ -42,7 +43,7 @@ $tituloVentana = "PRODUCTOS - con archivos y AJAX -";
 						</td>
 						<td rowspan="2">
 							<div id="divGrilla" style="height:610px;overflow:auto;border-style:solid">
-							
+
 							</div>
 						</td>
 					</tr>
