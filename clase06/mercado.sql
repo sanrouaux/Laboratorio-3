@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2019 a las 17:01:06
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 29-09-2019 a las 01:49:50
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -56,18 +56,22 @@ CREATE TABLE `usuarios` (
   `apellido` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `clave` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `perfil` int(11) NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT '0'
+  `estado` int(11) NOT NULL DEFAULT '0',
+  `correo` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `foto` varchar(50) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `clave`, `perfil`, `estado`) VALUES
-(2, 'Santiago', 'Rouaux', '1234', 1, 1),
-(3, 'Pedro', 'Gonzalez', '65473', 1, 1),
-(4, 'martin', 'rodriguez', '5555', 3, 5),
-(5, 'Joaquin', 'Martinez', '635272', 6, 4);
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `clave`, `perfil`, `estado`, `correo`, `foto`) VALUES
+(2, 'Santiago', 'Rouaux', '1234', 1, 1, 'santiago@mail.com', ''),
+(3, 'Pedro', 'Gonzalez', '65473', 1, 1, 'pedro@mail.com', ''),
+(4, 'martin', 'rodriguez', '5555', 3, 5, 'martin@mail.com', ''),
+(5, 'Joaquin', 'Martinez', '635272', 6, 4, 'joaquin@mail.com', ''),
+(9, 'martin', 'rouaux', '4321', 1, 1, 'mrouaux@gmail.com', './fotos/mrouaux@gmail.com.jpeg'),
+(10, 'martin', 'rodriguez', '1234', 1, 1, 'mrodriguez@mail.com', './fotos/mrodriguez@mail.com.jpeg');
 
 --
 -- Índices para tablas volcadas
@@ -99,7 +103,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

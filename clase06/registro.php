@@ -28,6 +28,6 @@
     <br/>
     <br/>
     <input type="button" id="btnAceptar" value="Aceptar" onclick="Registro()"/>
-    <input type="button" id="btnCancelar" value="Cancelar"/>
+    <a href="/login.php"><input type="button" id="btnCancelar" value="Cancelar"/></a>
 </body>
 </html>

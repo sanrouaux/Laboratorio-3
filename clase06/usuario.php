@@ -11,9 +11,9 @@ class usuario
     private $perfil;
     private $estado;
     private $correo;
-    private $photo;
+    private $foto;
 
-    function __construct($nombre, $apellido, $correo, $clave, $perfil, $photo)
+    function __construct($nombre, $apellido, $correo, $clave, $perfil, $foto)
     {
         $this->nombre = $nombre;
         $this->apellido = $apellido;
@@ -21,7 +21,7 @@ class usuario
         $this->perfil = $perfil;
         $this->estado = 1;
         $this->correo = $correo;
-        $this->photo = $photo;
+        $this->foto = $foto;
     }
 
     public function MostrarUsuario()
@@ -59,11 +59,10 @@ class usuario
     
     public function AltaUsuario() : bool 
     {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();        
         try {            
-            $consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios (nombre, apellido, clave, perfil, estado, correo, foto)"
-                                                    . "VALUES(:nombre, :apellido, :clave, :perfil, :estado, :correo, :foto)");
+            $consulta = $objetoAccesoDato->RetornarConsulta("INSERT INTO usuarios (nombre, apellido, clave, perfil, estado, correo, foto)"
+                                                    . " VALUES (:nombre, :apellido, :clave, :perfil, :estado, :correo, :foto)");
         
             $consulta->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
             $consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
