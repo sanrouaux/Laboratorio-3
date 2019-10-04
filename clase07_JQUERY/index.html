@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./main.js"></script>
+
+  <!--
+  <script>
+    function MostrarMensaje() {
+      var mensaje = $("#mensaje").val(); //Recupero por JQuery el valor del elemento con id = mensaje 
+      //$("#div_mensaje").html(mensaje); //Seteo el contenido HTML del elemento con id = div_mensaje
+      
+      //Petición AJAX con JQUERY
+      $.ajax({
+        type: "POST",
+        url: "./test.php",
+        data: "mensaje="+mensaje, //Información que envío
+        dataType: "json" //Indico el tipo de dato que quiero recibir. El objeto ajax lo parsea
+      })
+      .done(function(respuesta){
+        $("#div_mensaje").html(respuesta.mensaje + " - " + respuesta.fecha);
+      })
+      .fail(function() {
+        alert("Hubo un error");
+      })
+      .always()    
+    }
+  </script>
+  -->
+
+</head>
+<body>
+
+  <input type="text" id="mensaje"/>
+  <br>
+  <input type="file" id="imagen" />
+  <br>
+  <input type="button" onclick="EnviarImagen()" value="Mostrar"/>
+  
+  
+  <div id="div_mensaje"></div>
+  <img id="muestraImagen" height="40%" width="40%" src="" />
+
+  
+
+
+
+</body>
+</html>
