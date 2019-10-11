@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+    <table style='text-align:center'>
+        <tr>
+            <td>
+                <h4>Cuadrante:</h4>
+            </td>
+            <td rowspan="15">
+                <div id="grillaAliens"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="cuadrante"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Edad:</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="edad"/>
+            </td>
+        </tr>        
+        <tr>
+            <td>
+                <h4>Altura:</h4>
+            </td>
+        </tr>                
+        <tr>
+            <td>
+                <input type="text" id="altura"/>
+            </td>
+        </tr>               
+        <tr>
+            <td>
+                <h4>Raza:</h4>
+            </td>
+        </tr>                
+        <tr>
+            <td>
+                <input type="text" id="raza"/>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <h4>Planeta de origen:</h4>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <input type="text" id="planetaOrigen"/>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <h4>Foto:</h4>
+            </td>
+        </tr>  
+        <tr>
+                <td>
+                    <div id="imgFoto"></div>
+                </td>
+            </tr>   
+        <tr>
+            <td>
+                <input type="file" id="pathFoto"/>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <input id="agregar" type="button" value="Agregar" onclick="PrimerParcial.Manejadora.AgregarAlien('agregar')"/>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <input type="button" value="Mostrar" onclick="PrimerParcial.Manejadora.MostrarAliens()"/>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <input type="button" value="Guardar LS" onclick="PrimerParcial.Manejadora.GuardarEnLocalStorage()"/>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <input type="button" value="Verificar Existencia" onclick="PrimerParcial.Manejadora.VerificarExistencia()"/>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+                <input type="button" value="Aliens por cuadrante" onclick="PrimerParcial.Manejadora.ObtenerAliensPorCuadrante()"/>
+            </td>
+        </tr>    
+                       
+    </table>
+</body>
+</html>
