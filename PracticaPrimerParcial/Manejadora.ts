@@ -1,26 +1,33 @@
 /// <reference path="./Alien.ts" />
 /// <reference path="./IParte2.ts" />
 
+window.onload = () => {
+    PrimerParcial.Manejadora.MostrarAliens();
+}
+
 namespace PrimerParcial
 {
     export class Manejadora implements IParte2{
-        public static AgregarAlien(caso : string) {
+        public static AgregarAlien(caso : string) 
+        {
             let cuadrante : string = (<HTMLInputElement>document.getElementById("cuadrante")).value;
             let edad : string = (<HTMLInputElement>document.getElementById("edad")).value;
             let altura : string = (<HTMLInputElement>document.getElementById("altura")).value;
             let raza : string = (<HTMLInputElement>document.getElementById("raza")).value;
-            let planetaOrigen : string = (<HTMLInputElement>document.getElementById("planetaOrigen")).value;
-            let foto : any = (<HTMLInputElement> document.getElementById("pathFoto"));
-        
-            var alien : Entidades.Alien = new Entidades.Alien(cuadrante, parseInt(edad), parseFloat(altura), raza, planetaOrigen);
+            let planetaOrigen : string =  (<HTMLSelectElement> document.getElementById("cboPlaneta")).value;           
+            let pathFoto : string = (<HTMLInputElement>document.getElementById("foto")).value;       
+            pathFoto = pathFoto.split("\\")[2];  
+            var foto : any = (<HTMLInputElement> document.getElementById("foto"));
+            
+            var alien : Entidades.Alien = new Entidades.Alien(cuadrante, parseInt(edad), parseFloat(altura), raza, planetaOrigen, pathFoto);
         
             let fd : FormData = new FormData();
             fd.append('caso', caso);
-            fd.append("alien", JSON.stringify(alien));
+            fd.append("cadenaJson", JSON.stringify(alien));
             fd.append("foto", foto.files[0]);
 
             var request : XMLHttpRequest = new XMLHttpRequest();
-            request.open('POST', 'BACKEND/administrar.php');
+            request.open('POST', 'BACKEND/administrar.php', true);
             request.setRequestHeader("enctype", "multipart/form-data");
             request.send(fd);
             request.onreadystatechange = () => {
@@ -30,20 +37,19 @@ namespace PrimerParcial
                     Manejadora.MostrarAliens();
                 }
             }
-            
-        
+            Manejadora.LimpiarCampos();
         }
 
         public static MostrarAliens() {
             var request : XMLHttpRequest = new XMLHttpRequest();
-            request.open('POST', './BACKEND/administrar.php');
+            request.open('POST', './BACKEND/administrar.php', true);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send('caso=traer');
             request.onreadystatechange = () => {
                 if(request.status == 200 && request.readyState == 4) 
                 {
                     var aliens = JSON.parse(request.responseText);
-                    var tabla = '<table border="1">' +
+                    var tabla = '<table border="1" style="text-align:center">' +
                                     '<tr>' +
                                         '<td>CUADRANTE</td>' +
                                         '<td>EDAD</td>' +
@@ -60,14 +66,14 @@ namespace PrimerParcial
                                     '<td>'+aliens[i].altura+'</td>' +
                                     '<td>'+aliens[i].raza+'</td>' +
                                     '<td>'+aliens[i].planetaOrigen+'</td>' +
-                                    '<td><img heigth="150px" width="150px" src="'+aliens[i].pathFoto+'"/></td>' +
-                                    '<td><input type="button" class="eliminar" value="Eliminar" >' +
-                                    '<input type="button" class="modificar" value="Modificar" ></td>' +
+                                    '<td><img heigth="150px" width="150px" src="./BACKEND/fotos/'+aliens[i].pathFoto+'"/></td>' +
+                                    '<td><input type="button" class="eliminar" value="Eliminar" onclick="manejadora.Eliminar(' + <any>aliens[i] + ')" />' +
+                                    '<input type="button" class="modificar" value="Modificar" onclick="manejadora.Modificar(' + <any>aliens[i] + ')"  /></td>' +
                                 '</tr>';
                     }
                     tabla += '</table>'; 
-                    (<HTMLDivElement>document.getElementById('grillaAliens')).innerHTML = tabla;
-                    
+                    (<HTMLDivElement>document.getElementById('divTabla')).innerHTML = tabla;
+
                     let manejadora : Manejadora = new Manejadora();
 
                     let botonesEliminar : HTMLCollection = document.getElementsByClassName('eliminar');
@@ -81,14 +87,15 @@ namespace PrimerParcial
                         botonesModificar[i].addEventListener('click', () => {
                             manejadora.Modificar(aliens[i]);
                         });
-                    }      
+                    }                   
+                    Manejadora.GuardarEnLocalStorage();
                 }
             }
         }
 
         public static GuardarEnLocalStorage() {
             var request : XMLHttpRequest = new XMLHttpRequest();
-            request.open('POST', './BACKEND/administrar.php');
+            request.open('POST', './BACKEND/administrar.php', true);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send('caso=traer');
             request.onreadystatechange = () => {
@@ -111,8 +118,6 @@ namespace PrimerParcial
                 {
                     if(arrayObj[i].cuadrante == cuadrante && arrayObj[i].raza == raza) 
                     {
-                        console.log("El alien ya existe");
-                        alert("El alien ya existe");
                         flag = 1;
                         break;
                     }
@@ -122,15 +127,20 @@ namespace PrimerParcial
                     Manejadora.AgregarAlien('agregar');
                     Manejadora.GuardarEnLocalStorage();
                 }
+                else 
+                {
+                    console.log("El alien ya existe");
+                    alert("El alien ya existe");
+                }
             }
         }
 
         public static ObtenerAliensPorCuadrante() 
         {
             let contadorAliens : number = 0;
-            let cuadrantesConMasAliens : string[] = new Array();
+            let cuadrantesConMasAliens : string[] = new Array<string>();
             let mayorNumeroDeAliens : number = 0;
-            let cuadrantesConMenosAliens : string[] = new Array();
+            let cuadrantesConMenosAliens : string[] = new Array<string>();
             let menorNumeroDeAliens : number = 0;
 
             let aliens = localStorage.getItem('aliens_local_storage');
@@ -196,15 +206,18 @@ namespace PrimerParcial
                 var request : XMLHttpRequest = new XMLHttpRequest();
                 request.open('POST', 'BACKEND/administrar.php');
                 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.send('caso=eliminar&alien='+JSON.stringify(alien));
+                request.send('caso=eliminar&cadenaJson='+JSON.stringify(alien));
                 request.onreadystatechange = () => {
                     if(request.status == 200 && request.readyState == 4) 
                     {
                         console.log(request.responseText);
-                        Manejadora.GuardarEnLocalStorage();
                         Manejadora.MostrarAliens();
                     }
                 }                
+            }
+            else
+            {
+                alert("Acción cancelada");
             }
         }
 
@@ -214,13 +227,32 @@ namespace PrimerParcial
             (<HTMLInputElement>document.getElementById("edad")).value = alien.edad;
             (<HTMLInputElement>document.getElementById("altura")).value = alien.altura;
             (<HTMLInputElement>document.getElementById("raza")).value = alien.raza;
-            (<HTMLInputElement>document.getElementById("planetaOrigen")).value = alien.planetaOrigen;
+            (<HTMLInputElement>document.getElementById("raza")).readOnly = true;
+            (<HTMLSelectElement>document.getElementById("cboPlaneta")).value = alien.planetaOrigen;
+            (<HTMLInputElement>document.getElementById("foto")).value = '';
+            (<HTMLImageElement>document.getElementById("imgFoto")).src = '.\\BACKEND\\fotos\\' + alien.pathFoto;
+           
+            let boton = (<HTMLButtonElement>document.getElementById("btn-agregar"));
+            boton.value = "Modificar";
+            boton.onclick = () => {Manejadora.AgregarAlien('modificar')};
+        }
 
-            (<HTMLDivElement>document.getElementById("imgFoto")).innerHTML = '<img heigth="150px" width="150px" src="'+alien.pathFoto+'"/>';
-            (<HTMLInputElement>document.getElementById("enviar")).value = "Modificar";
 
-            let boton = (<HTMLButtonElement>document.getElementById("agregar"));
+        public static LimpiarCampos()
+        {
+            (<HTMLInputElement>document.getElementById("cuadrante")).value = '';
+            (<HTMLInputElement>document.getElementById("cuadrante")).readOnly = false;
+            (<HTMLInputElement>document.getElementById("edad")).value = '';
+            (<HTMLInputElement>document.getElementById("altura")).value = '';
+            (<HTMLInputElement>document.getElementById("raza")).value = '';
+            (<HTMLInputElement>document.getElementById("raza")).readOnly = false;
+            (<HTMLSelectElement>document.getElementById("cboPlaneta")).value = 'Melmac';
+            (<HTMLInputElement>document.getElementById("foto")).value = '';
+            (<HTMLImageElement>document.getElementById("imgFoto")).src = '.\\BACKEND\\fotos\\alien_defecto.jpg';
 
+            let boton = (<HTMLButtonElement>document.getElementById("btn-agregar"));
+            boton.value = "Agregar";
+            boton.onclick = () => {Manejadora.AgregarAlien('agregar')};
         }
 
     }

@@ -1,1 +1,5 @@
-[{"cuadrante":"B-12","edad":134,"altura":1.98,"raza":"Reptilico","planetaOrigen":"Centauro","pathFoto":".\\BACKEND\\fotos\\01-36-49.png"},{"cuadrante":"B-8","edad":234,"altura":0.5,"raza":"Esponja","planetaOrigen":"Sulfur","pathFoto":".\\BACKEND\\fotos\\02-25-22.png"},{"cuadrante":"B-6","edad":55,"altura":2.42,"raza":"Hutt","planetaOrigen":"Jabba","pathFoto":".\\BACKEND\\fotos\\02-08-59.png"}]
+{"cuadrante":"Teutron","edad":48,"altura":1.45,"raza":"Habilidus","planetaOrigen":"Kriptón","pathFoto":"06-18-57.png"}
+{"cuadrante":"Gurk 32","edad":6,"altura":1.3,"raza":"ET","planetaOrigen":"Vulcano","pathFoto":"06-19-31.png"}
+{"cuadrante":"B-54","edad":32,"altura":2.13,"raza":"Reptiliano","planetaOrigen":"Vulcano","pathFoto":"01-36-49.png"}
+{"cuadrante":"Urlk","edad":123,"altura":2.3,"raza":"Hutt","planetaOrigen":"Kriptón","pathFoto":"02-08-59.png"}
+{"cuadrante":"Teutron","edad":3,"altura":12,"raza":"Kriter","planetaOrigen":"Melmac","pathFoto":"10-12-25.png"}

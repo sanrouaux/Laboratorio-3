@@ -48,6 +48,9 @@ var Entidades;
 })(Entidades || (Entidades = {}));
 /// <reference path="./Alien.ts" />
 /// <reference path="./IParte2.ts" />
+window.onload = function () {
+    PrimerParcial.Manejadora.MostrarAliens();
+};
 var PrimerParcial;
 (function (PrimerParcial) {
     var Manejadora = /** @class */ (function () {
@@ -58,15 +61,17 @@ var PrimerParcial;
             var edad = document.getElementById("edad").value;
             var altura = document.getElementById("altura").value;
             var raza = document.getElementById("raza").value;
-            var planetaOrigen = document.getElementById("planetaOrigen").value;
-            var foto = document.getElementById("pathFoto");
-            var alien = new Entidades.Alien(cuadrante, parseInt(edad), parseFloat(altura), raza, planetaOrigen);
+            var planetaOrigen = document.getElementById("cboPlaneta").value;
+            var pathFoto = document.getElementById("foto").value;
+            pathFoto = pathFoto.split("\\")[2];
+            var foto = document.getElementById("foto");
+            var alien = new Entidades.Alien(cuadrante, parseInt(edad), parseFloat(altura), raza, planetaOrigen, pathFoto);
             var fd = new FormData();
             fd.append('caso', caso);
-            fd.append("alien", JSON.stringify(alien));
+            fd.append("cadenaJson", JSON.stringify(alien));
             fd.append("foto", foto.files[0]);
             var request = new XMLHttpRequest();
-            request.open('POST', 'BACKEND/administrar.php');
+            request.open('POST', 'BACKEND/administrar.php', true);
             request.setRequestHeader("enctype", "multipart/form-data");
             request.send(fd);
             request.onreadystatechange = function () {
@@ -75,16 +80,17 @@ var PrimerParcial;
                     Manejadora.MostrarAliens();
                 }
             };
+            Manejadora.LimpiarCampos();
         };
         Manejadora.MostrarAliens = function () {
             var request = new XMLHttpRequest();
-            request.open('POST', './BACKEND/administrar.php');
+            request.open('POST', './BACKEND/administrar.php', true);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send('caso=traer');
             request.onreadystatechange = function () {
                 if (request.status == 200 && request.readyState == 4) {
                     var aliens = JSON.parse(request.responseText);
-                    var tabla = '<table border="1">' +
+                    var tabla = '<table border="1" style="text-align:center">' +
                         '<tr>' +
                         '<td>CUADRANTE</td>' +
                         '<td>EDAD</td>' +
@@ -101,18 +107,18 @@ var PrimerParcial;
                             '<td>' + aliens[i].altura + '</td>' +
                             '<td>' + aliens[i].raza + '</td>' +
                             '<td>' + aliens[i].planetaOrigen + '</td>' +
-                            '<td><img heigth="150px" width="150px" src="' + aliens[i].pathFoto + '"/></td>' +
-                            '<td><input type="button" class="eliminar" value="Eliminar" >' +
-                            '<input type="button" class="modificar" value="Modificar" ></td>' +
+                            '<td><img heigth="150px" width="150px" src="./BACKEND/fotos/' + aliens[i].pathFoto + '"/></td>' +
+                            '<td><input type="button" class="eliminar" value="Eliminar" onclick="manejadora.Eliminar(' + aliens[i] + ')" />' +
+                            '<input type="button" class="modificar" value="Modificar" onclick="manejadora.Modificar(' + aliens[i] + ')"  /></td>' +
                             '</tr>';
                     }
                     tabla += '</table>';
-                    document.getElementById('grillaAliens').innerHTML = tabla;
+                    document.getElementById('divTabla').innerHTML = tabla;
                     var manejadora_1 = new Manejadora();
                     var botonesEliminar = document.getElementsByClassName('eliminar');
                     var _loop_1 = function (i) {
                         botonesEliminar[i].addEventListener('click', function () {
-                            manejadora_1.Eliminar(aliens[i], true);
+                            manejadora_1.Eliminar(aliens[i]);
                         });
                     };
                     for (var i = 0; i < botonesEliminar.length; i++) {
@@ -127,12 +133,13 @@ var PrimerParcial;
                     for (var i = 0; i < botonesModificar.length; i++) {
                         _loop_2(i);
                     }
+                    Manejadora.GuardarEnLocalStorage();
                 }
             };
         };
         Manejadora.GuardarEnLocalStorage = function () {
             var request = new XMLHttpRequest();
-            request.open('POST', './BACKEND/administrar.php');
+            request.open('POST', './BACKEND/administrar.php', true);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send('caso=traer');
             request.onreadystatechange = function () {
@@ -150,8 +157,6 @@ var PrimerParcial;
                 var flag = 0;
                 for (var i = 0; i < arrayObj.length; i++) {
                     if (arrayObj[i].cuadrante == cuadrante && arrayObj[i].raza == raza) {
-                        console.log("El alien ya existe");
-                        alert("El alien ya existe");
                         flag = 1;
                         break;
                     }
@@ -159,6 +164,10 @@ var PrimerParcial;
                 if (flag == 0) {
                     Manejadora.AgregarAlien('agregar');
                     Manejadora.GuardarEnLocalStorage();
+                }
+                else {
+                    console.log("El alien ya existe");
+                    alert("El alien ya existe");
                 }
             }
         };
@@ -214,34 +223,21 @@ var PrimerParcial;
                 console.log("Numero de aliens: " + menorNumeroDeAliens + "\n");
             }
         };
-        Manejadora.prototype.Eliminar = function (alien, pregunta) {
-            if (pregunta) {
-                if (window.confirm('Desea eliminar al alien ' + alien.raza + ' del cuadrante ' + alien.cuadrante + '?')) {
-                    var request = new XMLHttpRequest();
-                    request.open('POST', 'BACKEND/administrar.php');
-                    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                    request.send('caso=eliminar&alien=' + JSON.stringify(alien));
-                    request.onreadystatechange = function () {
-                        if (request.status == 200 && request.readyState == 4) {
-                            console.log(request.responseText);
-                            Manejadora.GuardarEnLocalStorage();
-                            Manejadora.MostrarAliens();
-                        }
-                    };
-                }
-            }
-            else {
+        Manejadora.prototype.Eliminar = function (alien) {
+            if (window.confirm('Desea eliminar al alien ' + alien.raza + ' del cuadrante ' + alien.cuadrante + '?')) {
                 var request = new XMLHttpRequest();
                 request.open('POST', 'BACKEND/administrar.php');
                 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.send('caso=eliminar&alien=' + JSON.stringify(alien));
+                request.send('caso=eliminar&cadenaJson=' + JSON.stringify(alien));
                 request.onreadystatechange = function () {
                     if (request.status == 200 && request.readyState == 4) {
                         console.log(request.responseText);
-                        Manejadora.GuardarEnLocalStorage();
                         Manejadora.MostrarAliens();
                     }
                 };
+            }
+            else {
+                alert("Acción cancelada");
             }
         };
         Manejadora.prototype.Modificar = function (alien) {
@@ -250,12 +246,27 @@ var PrimerParcial;
             document.getElementById("edad").value = alien.edad;
             document.getElementById("altura").value = alien.altura;
             document.getElementById("raza").value = alien.raza;
-            document.getElementById("planetaOrigen").value = alien.planetaOrigen;
-            document.getElementById("imgFoto").innerHTML = '<img heigth="150px" width="150px" src="' + alien.pathFoto + '"/>';
-            document.getElementById("enviar").value = "Modificar";
-            /*let man = new Manejadora();
-            man.Eliminar(alien, false);
-            Manejadora.AgregarAlien('modificar');*/
+            document.getElementById("raza").readOnly = true;
+            document.getElementById("cboPlaneta").value = alien.planetaOrigen;
+            document.getElementById("foto").value = '';
+            document.getElementById("imgFoto").src = '.\\BACKEND\\fotos\\' + alien.pathFoto;
+            var boton = document.getElementById("btn-agregar");
+            boton.value = "Modificar";
+            boton.onclick = function () { Manejadora.AgregarAlien('modificar'); };
+        };
+        Manejadora.LimpiarCampos = function () {
+            document.getElementById("cuadrante").value = '';
+            document.getElementById("cuadrante").readOnly = false;
+            document.getElementById("edad").value = '';
+            document.getElementById("altura").value = '';
+            document.getElementById("raza").value = '';
+            document.getElementById("raza").readOnly = false;
+            document.getElementById("cboPlaneta").value = 'Melmac';
+            document.getElementById("foto").value = '';
+            document.getElementById("imgFoto").src = '.\\BACKEND\\fotos\\alien_defecto.jpg';
+            var boton = document.getElementById("btn-agregar");
+            boton.value = "Agregar";
+            boton.onclick = function () { Manejadora.AgregarAlien('agregar'); };
         };
         return Manejadora;
     }());
