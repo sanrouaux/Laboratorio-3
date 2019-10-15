@@ -108,8 +108,8 @@ var PrimerParcial;
                             '<td>' + aliens[i].raza + '</td>' +
                             '<td>' + aliens[i].planetaOrigen + '</td>' +
                             '<td><img heigth="150px" width="150px" src="./BACKEND/fotos/' + aliens[i].pathFoto + '"/></td>' +
-                            '<td><input type="button" class="eliminar" value="Eliminar" onclick="manejadora.Eliminar(' + aliens[i] + ')" />' +
-                            '<input type="button" class="modificar" value="Modificar" onclick="manejadora.Modificar(' + aliens[i] + ')"  /></td>' +
+                            '<td><input type="button" class="eliminar" value="Eliminar" />' +
+                            '<input type="button" class="modificar" value="Modificar" /></td>' +
                             '</tr>';
                     }
                     tabla += '</table>';
