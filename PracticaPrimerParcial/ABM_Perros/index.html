@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Primer Parcial Laboratorio III</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  
+  <script src="./FRONTEND/main.js"></script>
+</head>
+
+<body style="background-color:darkgrey">
+  <div class="container" style="background-color:lightblue">
+    <br>
+    <h2 style="background-color:gray;color:ghostwhite">Rouaux, Santiago</h2>
+    <br>
+    <h4>ABM - Perro</h4>
+    <br>
+    <div class="row responsive-utilities-test visible-on">
+
+      <table class="table table" style="width:90%">
+        <tr>
+          <td style="width:45%">
+            <table class="table table-hover" style="background-color:cornflowerblue">
+              <tr>
+                <td><label class="col-md-2 control-label">Tamaño</label></td>
+                <td><input type="text" id="txtTamaño" /></td>
+                <td><input type="checkbox" id="cbTamaño" value="tamaño" checked="true"></td>
+              </tr>
+              <tr>
+                <td><label class="col-md-2 control-label">Edad</label></td>
+                <td><input type="text" id="txtEdad" /></td>
+                <td><input type="checkbox" id="cbEdad" value="edad" checked="true"></td>
+              </tr>
+              <tr>
+                <td><label class="col-md-2 control-label">Precio</label></td>
+                <td><input type="text" id="txtPrecio" /></td>              
+                <td><input type="checkbox" id="cbPrecio" value="precio" checked="true"></td>
+            </tr>
+              <tr>
+                <td><label class="col-md-2 control-label">Nombre</label></td>
+                <td><input type="text" id="txtNombre" /></td> 
+                <td><input type="checkbox" id="cbNombre" value="nombre" checked="true"></td>
+            </tr>
+              <tr>
+                <td><label class="col-md-2 control-label">Raza</label></td>
+                <td><select id="cboRaza" class="">
+                    <option>Salchicha</option>
+                    <option>Bulldog</option>
+                    <option>Coly</option>
+                  </select>
+                </td>
+                <td><input type="checkbox" id="cbRaza" value="raza" checked="true"></td>
+              </tr>
+              <tr>
+                <td><label class="col-md-2 control-label">Foto</label></td>
+                <td><input type="file" id="foto" name="foto" ></td>
+                <td><input type="checkbox" id="cbFoto" value="foto" checked="true"></td>
+              </tr>
+              <tr>
+                  <td colspan="2" style="text-align:center">
+                      <div style="height:100px"><img id="imgFoto" src="./perro_default.png" height="100px" width="100px" /></div><!-- PREVISUALIZACION -->
+                  </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input type="button" value="Agregar JSON" class="btn btn-success" onclick="PrimerParcial.Manejadora.AgregarPerroJSON()"/>
+                  <input type="button" value="Mostrar JSON" class="btn btn-info" onclick="PrimerParcial.Manejadora.MostrarPerrosJSON()"/>
+                  <input id="btn-agregar" type="button" value="Agregar en BD" class="btn btn-default" onclick="PrimerParcial.Manejadora.AgregarPerroEnBaseDatos('agregar')" />
+                  <input type="button" value="Verificar y Agregar en BD" class="btn btn-warning" onclick="PrimerParcial.Manejadora.VerificarExistencia()" />
+                  <input type="button" value="Mostrar BD" class="btn btn-warning"  onclick="PrimerParcial.Manejadora.MostrarPerrosBaseDatos()" />
+                  <input id="btn-1" type="button" value="Obtener Perros por tamaño" class="btn btn-default"  />
+                  <input id="btn-2" type="button" value="Filtrar por razas" class="btn btn-info" />
+                  <input id="btn-3" type="button" value="Cargar razas" class="btn btn-warning" />
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <div class="" style="background-color:lavenderblush;">
+              <div id="divTabla">
+                tabla aqu&iacute;...
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <input type="hidden" id="hdnIdCiudadano"><!-- PARA MODIFICAR -->
+    <div id="divSpinner" style="display:none;position:absolute;top: 250px;left: 450px"><img id="imgSpinner" src="./BACKEND/gif-load.gif" /></div><!-- PARA EL SPINNER -->
+  </div>
+</body>
+
+</html>
