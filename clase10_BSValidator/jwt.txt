@@ -1,0 +1,21 @@
+//NECESARIO PARA GENERAR EL JWT
+use Firebase\JWT\JWT;
+
+
+
+//DENTRO DEL VERBO
+
+    $datos = $request->getParsedBody();
+    $ahora = time();
+    
+    $payload = array(
+        'iat' => $ahora,            //CUANDO SE CREO EL JWT (OPCIONAL)
+        'exp' => $ahora + (30),     //INDICA EL TIEMPO DE VENCIMIENTO DEL JWT (OPCIONAL)
+        'data' => $datos,           //DATOS DEL JWT
+        'app' => "API REST 2019"    //INFO DE LA APLICACION (PROPIO)
+    );
+      
+    //CODIFICO A JWT
+    $token = JWT::encode($payload, "miClaveSecreta");
+    
+    return $response->withJson($token, 200);
