@@ -1,0 +1,13 @@
+{
+  "name": "bootstrap",
+  "authors": [
+    "utn-fra <utn-fra@gmail.com>"
+  ],
+  "description": "ejemplos de bootstrap",
+  "main": "",
+  "license": "MIT",
+  "homepage": "http://localhost/index.html",
+  "dependencies": {
+    "bootstrap": "latest"
+  }
+}
