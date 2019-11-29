@@ -1,0 +1,7 @@
+npm install -g bower
+bower init
+bower install
+
+npm install --save @types/jquery
+
+
