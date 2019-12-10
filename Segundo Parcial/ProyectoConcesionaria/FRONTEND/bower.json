@@ -1,0 +1,18 @@
+{
+  "name": "Rouaux.Santiago",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrapValidator": "bootstrapValidator#^0.5.3"
+  }
+}

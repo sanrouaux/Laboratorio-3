@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Principal</title>
+
+    <script type="text/javascript" src="./vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./css.css">
+
+    <script type="text/javascript" src="./principal.js"></script>
+</head>
+
+<body style="background-color:rgb(153, 167, 184)">
+
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-info">
+                        <h1 class="">
+                            <strong>PRINCIPAL</strong>
+                        </h1>
+                    </div>
+                </div>
+                <!-- Formulario -->
+                <div class="row">
+                    <div class="col-sm-4 col-xs-4 col-md-4 form-box">
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form" id="form">
+
+                                <!-- Input -->
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nombre</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-barcode"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="nombre" id="txtNombre" placeholder="Nombre" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Input -->
+                                <!-- Input -->
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Precio</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-usd"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="precio" id="txtPrecio" placeholder="Precio">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Input -->
+                                <!-- Botones -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-info btn-block" id="btnEnviar" value="">Enviar</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="reset" class="btn btn-warning btn-block" id="btnEnviar">Limpiar</button>
+                                    </div>
+                                </div>
+                                <!-- Botones -->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-xs-8 col-md-8" id="divTabla">
+                    </div>
+                </div>
+
+                <div class="row" id="divTablaProductos">
+
+                </div>
+            </div>
+            <!-- Formulario -->
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">        
+        <title>Principal</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+           
+        <!--En caso de querer usar las librerias descargadas, actualizar bower, inicializarlo, 
+        incluir el archivo .bowerrc e instalar-->
+        <!--link rel="stylesheet" href="./librerias/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./librerias/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+        <script type="text/javascript" src="./librerias/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="./librerias/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./librerias/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script-->
+        
+        <!-- Scripts Nuevos -->
+        <!--link rel="stylesheet" href="./estilos/parcial.css" /-->
+        <script type="text/javascript" src="./principalValidator.js"></script>
+        <script type="text/javascript" src="./principal.js"></script>
+    </head>
+    
+    <body>
+        <div class="container-fluid" id="marco" style="background-color:rgb(157, 227, 235)">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <span class="titulo"><h2>PRINCIPAL</h2></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6" id="listadoUsuarios" style="background-color:rgb(16, 116, 128)"></div>
+
+                <div class="col-md-6" id="listadoAutos" style="background-color:rgb(228, 168, 39)"></div>
+                
+                <!--Primera ventana modal. Pide confirmacion para borrar un auto-->
+                <div id="confirmarEliminar" class="modal fade" role="dialog" hidden>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                    data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Confirmar eliminacion</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <p id="confirmarTexto"></p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                    id="modal-btn-si" data-dismiss="modal">Si</button>
+                                <button type="button" class="btn btn-primary"
+                                    id="modal-btn-no" data-dismiss="modal">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin ventana modal-->
+
+
+                <!--VENTANA MODAL - MODIFICAR un auto-->
+                <div id="modificarAuto" class="modal fade" role="dialog" hidden>
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content" style="background-color:teal">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="modal-title"><h1>MODIFICAR AUTO</h1></div>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="modificarForm" class="well" style="background: lightgrey">
+                                    
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+                                                <label class="control-label">ID</label>
+                                            </div>
+                                            <div class="col-sm-10 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
+                                                    <input name="id" class="form-control" type="text" id="id" placeholder="ID" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                            
+                                    
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+                                                <label class="control-label">Marca</label>
+                                            </div>
+                                            <div class="col-sm-10 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-ice-lolly"></i></span>
+                                                    <input name="marca" class="form-control" type="text" id="marca" placeholder="Marca">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                            
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+                                                <label class="control-label">Color</label>
+                                            </div>
+                                            <div class="col-sm-10 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
+                                                    <input name="color" class="form-control" type="text" id="color" placeholder="Color">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+                                                <label for="password" class="control-label">Precio</label>
+                                            </div>
+                                            <div class="col-sm-10 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                                    <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+                                                <label for="confirm" class="control-label">Modelo</label>
+                                            </div>
+                                            <div class="col-sm-10 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                                    <input type="text" name="modelo" id="modelo" class="form-control" placeholder="Modelo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button type="submit" class="btn btn-block btn-primary" id="btnEnviarModificacion">Modificar</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button type="reset" class="btn btn-block btn-warning" id="btnLimpiarModificacion">Limpiar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!--div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="modal-btn-si" data-dismiss="modal">Realizado</button>
+                            </div-->
+                        </div>
+                    </div>
+                </div>
+        <!--FIN VENTANA MODAL-->
+            </div>
+
+
+            <!--ALERT-->
+            <div class="alert alert-warning" style='display:none;'>
+                <button type="button" class="close" id="toggleAlert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="alertText"></div>
+            </div>
+            <!--FIN ALERT-->
+
+
+           
+        </div>
+    </body>
+</html>

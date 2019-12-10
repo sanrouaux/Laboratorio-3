@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro</title>
+
+    <script type="text/javascript" src="./vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./css.css">
+
+    <script type="text/javascript" src="./registro.js"></script>
+</head>
+
+<body style="background-color:rgb(153, 167, 184)">
+
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-info">
+                        <h1 class="">
+                            <strong>REGISTRO</strong>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form" id="form">
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Apellido</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-user"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="apellido" id="txtApellido" placeholder="Apellido" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Nombre</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-user"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="nombre" id="txtNombre" placeholder="Nombre" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">E-Mail</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-envelope"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="email" id="txtCorreo" placeholder="Correo" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Legajo</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-folder-open"></i>
+                                            </span>
+
+                                            <input type="text" class="form-control" name="legajo" id="txtLegajo" placeholder="Legajo" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Perfil</label>
+                                    <div class=" inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                            </span>
+
+                                            <select class="form-control" name="perfil" id="cboPerfil">
+                                                <option>admin</option>
+                                                <option>user</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 control-label">Foto</label>
+                                        <div class=" inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-camera"></i>
+                                                </span>
+
+                                                <input type="file" class="form-control" name="foto" id="filFoto"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Clave</label>
+                                    <div class="inputGroupContainer">
+                                        <div class="input-group">
+
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-lock"></i>
+                                            </span>
+
+                                            <input type="password" class="form-control" name="clave" id="pswPass" placeholder="Clave">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 control-label">Confirmar</label>
+                                        <div class="inputGroupContainer">
+                                            <div class="input-group">
+    
+                                                <span class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-lock"></i>
+                                                </span>
+    
+                                                <input type="password" class="form-control" name="confirmar" placeholder="Repita clave">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-info btn-block" id="btnEnviar">Enviar</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="reset" class="btn btn-warning btn-block" id="btnEnviar">Limpiar</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "abm con json web token",
+  "authors": [
+    "1caruxx <fernandohugolareu@hotmail.com>"
+  ],
+  "description": "Alta, baja y modificacion de productos, permitiendo a un empleado logearse.",
+  "main": "",
+  "license": "MIT",
+  "homepage": "index.html",
+  "dependencies": {
+    "bootstrap":"latest",
+    "bootstrapvalidator":"latest"
+  }
+}
