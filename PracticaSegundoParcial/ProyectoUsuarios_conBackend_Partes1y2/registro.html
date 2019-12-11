@@ -5,26 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Registro</title>
-        <link rel="stylesheet"
-            href="./librerias/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet"
-            href="./librerias/bootstrapvalidator/dist/css/bootstrapValidator.css"
-            />
-        <script type="text/javascript"
-            src="./librerias/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript"
-            src="./librerias/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript"
-            src="./librerias/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+        
         <!-- Scripts Nuevos -->
         <script type="text/javascript" src="./registroValidator.js"></script>
         <script type="text/javascript" src="./registro.js"></script>
     </head>
     <body>
-        <div class="container" >
+        <div class="container" style="width: 80%; background-color: lightgrey">
             <div class="row">
-                <div class="col-md-2"></div>
-                <span class="titulo">Registro</span><br>
+                <span class="titulo" style="font-size:200%">REGISTRO</span><br>
 
                 <div class="col-md-2"></div>
                 <form class="well form-horizontal" id="registroForm" method="POST" enctype="multipart/form-data">
@@ -104,7 +99,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Clae</label>
+                        <label class="col-md-4 control-label">Clave</label>
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i>
@@ -128,10 +123,10 @@
                     <div class="form-group" align="center">
                         <label class="control-label col-md-1"></label>
                         <button class="btn btn-primary col-md-4" type="submit" id="btnEnviar">
-                            Enviar<span class="glyphicon glyphicon-send"></span>
+                            Enviar
                         </button>
                         <label class="control-label col-md-2"></label>
-                        <button class="btn btn-warning col-md-4" type="reset">
+                        <button class="btn btn-warning col-md-4" type="reset" id="btnLimpiar">
                             Limpiar
                         </button>
                     </div> 

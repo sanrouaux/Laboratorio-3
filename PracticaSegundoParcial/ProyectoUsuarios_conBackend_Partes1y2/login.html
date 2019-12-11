@@ -6,27 +6,23 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login</title>
 
-        <link rel="stylesheet"
-            href="./librerias/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet"
-            href="./librerias/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-        <script type="text/javascript"
-            src="./librerias/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript"
-            src="./librerias/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript"
-            src="./librerias/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+        
         <!-- Scripts Nuevos -->
-        <link rel="stylesheet" href="./estilos/parcial.css" />
+        <!--link rel="stylesheet" href="./estilos/parcial.css" /-->
         <script type="text/javascript" src="./loginValidator.js"></script>
         <script type="text/javascript" src="./login.js"></script>
     </head>
 
     <body>
-        <div class="container" >
+        <div class="container" style="width: 80%; background-color: rgb(255, 193, 202)">
             <div class="row">
                 <div class="col-md-2"></div>
-                <span class="titulo">LOGIN</span><br>
+                <span class="titulo" style="font-size:200%">LOGIN</span><br>
 
                 <div class="col-md-2"></div>
                 <form class="well form-horizontal" id="loginForm" method="POST" enctype="multipart/form-data">
@@ -77,7 +73,7 @@
                 <button type="button" class="close" id="toggleAlert" onclick="EscondeAlertLogin()">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3><div id="alertText">E-mail o clave incorrecta</div></h3>
+                <h3><div id="alertText"></div></h3>
             </div>
 
             

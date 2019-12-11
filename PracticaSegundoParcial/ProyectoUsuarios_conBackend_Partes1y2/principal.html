@@ -5,27 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Principal</title>
-        <link rel="stylesheet"
-            href="./librerias/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet"
-            href="./librerias/bootstrapvalidator/dist/css/bootstrapValidator.css"
-            />
-        <script type="text/javascript"
-            src="./librerias/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript"
-            src="./librerias/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript"
-            src="./librerias/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+        
         <!-- Scripts Nuevos -->
-        <link rel="stylesheet" href="./estilos/parcial.css" />
         <!--script type="text/javascript" src="./registroValidator.js"></script-->
         <script type="text/javascript" src="./principal.js"></script>
     </head>
     <body>
         <div class="container" id="marco" style="background-color:rgb(157, 227, 235)">
             <div class="row">
-                <div class="col-md-2"></div>
-                <span class="titulo">PRINCIPAL</span>
+                <div class="col-md-1"></div>
+                <span class="titulo" style="font-size:200%">PRINCIPAL</span>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
@@ -188,31 +183,65 @@
                 <!--Fin ventana modal-->
             </div>
 
+                
+            <!--CONTROLES-->
             <div class="row" id="controles" hidden>
-                <label class="col-md-4">Color de Fondo</label>
-                <select class="col-md-8" id="colorFondo">
-                    <option value="white">Blanco</option>
-                    <option value="green">Verde</option>
-                    <option value="red">Rojo</option>
-                    <option value="blue">Azul</option>
-                </select><br>
-                <label class="col-md-4">Color de Fuente</label>
-                <select class="col-md-8" id="colorFuente">
-                    <option value="black">Negro</option>
-                    <option value="darkgreen">Verde</option>
-                    <option value="darkred">Rojo</option>
-                    <option value="darkblue">Azul</option>
-                </select><br>
-                <label class="col-md-4">Estilo de imagen</label>
-                <select class="col-md-8" id="marcoImagen">
-                    <option value="">Default</option>
-                    <option value="rounded">Redondeado</option>
-                    <option value="circle">Circular</option>
-                    <option value="thumbnail">Diapositiva</option>
-                </select><br>
-                <button type="button" class="btn btn-warning"
-                    id="btnGuardarCambios">Guardar Cambios</button>
+                <div class="form-group row">
+                    <label class="col-md-2 control-label">Color de fondo</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-option-horizontal"></i>
+                                </span>
+                                <select name="colorFondo" class="selectpicker form-control" id="colorFondo">
+                                    <option value="white">Blanco</option>
+                                    <option value="green">Verde</option>
+                                    <option value="red">Rojo</option>
+                                    <option value="blue">Azul</option>
+                                </select>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 control-label">Color de fuente</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-option-horizontal"></i>
+                                </span>
+                                <select name="colorFuente" class="selectpicker form-control" id="colorFuente">
+                                    <option value="black">Negro</option>
+                                    <option value="darkgreen">Verde</option>
+                                    <option value="darkred">Rojo</option>
+                                    <option value="darkblue">Azul</option>
+                                </select>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 control-label">Estilo de imagen</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-option-horizontal"></i>
+                                </span>
+                                <select name="estiloImagen" class="selectpicker form-control" id="estiloImagen">
+                                    <option value="">Default</option>
+                                    <option value="rounded">Redondeado</option>
+                                    <option value="circle">Circular</option>
+                                    <option value="thumbnail">Diapositiva</option>
+                                </select>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-1"></label>
+                    <button class="btn btn-warning col-md-4 col-" type="button" id="btnGuardarCambios">
+                        Guardar Cambios
+                    </button>
+                </div>                
             </div>
+
         </div>
     </body>
 </html>

@@ -1,19 +1,27 @@
-//npm install --save @types/jquery
 ///<reference path='./node_modules/@types/jquery/index.d.ts' />
 
-$(document).ready(function() {
 
-    /*$('#btnEnviar').click(function(e : any) {
-        e.preventDefault();
-        EnviarRegistro();
-    });*/
+//Asigna funcionalidad al boton Limpiar al terminar de cargar el documento 
+$(document).ready(function() {
 
     $("#btnLimpiar").click(function (event: any) {
         EscondeAlertRegistro();
     }); 
+
+    $("#toggleAlert").click(function (event: any) {
+        EscondeAlertRegistro();
+    }); 
+
 })
 
 
+/* @resumen Recupero todos los datos ingresados y da de alta a un nuevo usuario, siempre y cuando el email
+*  no exista previamente en BS
+*
+* @param Sin parametros
+*
+* @return Sin retorno
+*/
 function EnviarRegistro() {
     let nombre = <string>$('#nombreText').val();
     let apellido = <string>$('#apellidoText').val();
@@ -41,24 +49,23 @@ function EnviarRegistro() {
             
             let formData : FormData = new FormData();
             formData.append("usuario", nuevoUsuario);
-            formData.append("foto",foto);
+            formData.append("foto", foto);
 
             $.ajax({
                 type: "POST",
-                url: "./BACKEND/Usuarios/",
-                dataType: "json", //Indico el tipo de dato que quiero recibir. El objeto ajax lo parsea
+                url: "./BACKEND/usuarios",
+                dataType: "json", 
                 cache: false,
                 contentType: false,
                 processData: false,
-                data: formData,
-                async: true
+                data: formData
               })
               .done(function(respuesta : any){
-                let nuevoUsuJson = JSON.parse(nuevoUsuario);
-                arrayUsuarios.push(nuevoUsuJson);            
-                localStorage.setItem('usuarios', JSON.stringify(arrayUsuarios));
-
+                //let nuevoUsuJson = JSON.parse(nuevoUsuario);
+                //arrayUsuarios.push(nuevoUsuJson);            
+                //localStorage.setItem('usuarios', JSON.stringify(arrayUsuarios));                
                 window.location.replace('./login.html');
+                TraerUsuariosDB();
               })
               .fail(function() {
                 alert("Hubo un error al conectar con la Base de Datos");
@@ -74,6 +81,13 @@ function EnviarRegistro() {
     }
 }
 
+
+/* @resumen Esconde el Alert(Bootstrap)
+*
+* @param Sin parametros
+*
+* @return Sin retorno
+*/
 function EscondeAlertRegistro() {
     $(".alert").hide();
 }

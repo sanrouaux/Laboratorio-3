@@ -7,6 +7,7 @@ $(document).ready(function () {
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
+
         fields: {
             nombre: {
                 validators: {
@@ -51,7 +52,7 @@ $(document).ready(function () {
                         message: 'El legajo debe tener entre 3 y 6 números'
                     },
                     integer: {
-                        message: 'El legajo es no adminite caracteres numéricos'
+                        message: 'El legajo sólo adminite caracteres numéricos'
                     }
                 }
             },
@@ -61,8 +62,8 @@ $(document).ready(function () {
                         message: 'Seleccione una imagen'
                     },
                     file: {
-                        extension: 'jpg,png',
-                        //type: 'image/jpeg,image/png',
+                        extension: 'jpg, png',
+                        type: 'image/jpeg,image/png',
                         message: 'El archivo seleccionado no es válido!'
                     },
                 }
