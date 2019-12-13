@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login</title>
+
+        <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script-->
+
+        <link rel="stylesheet" href="./librerias/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./librerias/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+        <script type="text/javascript" src="./librerias/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="./librerias/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./librerias/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+        
+        <!-- Scripts Nuevos -->
+        <link rel="stylesheet" href="./estilos/parcial.css" />
+        <script type="text/javascript" src="./loginValidator.js"></script>
+        <script type="text/javascript" src="./login.js"></script>
+    </head>
+
+    <body>
+        <div class="container" style="background-color: rgb(255, 193, 202)">
+            <div class="row">
+                <span class="titulo">LOGIN</span>
+                <br>
+
+                <!--div class="col-md-2"></div-->
+                <form class="well form-horizontal" id="loginForm" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">E-mail</label>
+                        <div class="col-md-9 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </span>
+                                <input name="mail" class="form-control" type="text" id="mailText" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Clave</label>
+                        <div class="col-md-9 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i>
+                                </span>
+                                <input name="clave" class="form-control" type="password" id="claveText" placeholder="Clave"> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" align="center">
+                        <label class="control-label col-md-1 col-xs-1"></label>
+                        <button class="btn btn-primary col-md-4 col-sm-4 col-xs-10" type="submit" id="btnEnviar">
+                            Enviar
+                        </button>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-1"></label>
+                        <!--label class="control-label col-md-0 col-sm-0 cols-xs-1"></label-->
+                        <button class="btn btn-warning col-md-4 col-sm-4 col-xs-10" type="reset" id="btnLimpiar">
+                            Limpiar
+                        </button>
+                    </div> 
+                </form>
+            </div>
+
+            <div class="row">
+                <label class="col-md-1 col-sm-1 col-xs-1"></label>
+                <button class="btn btn-success col-md-10 col-sm-10 col-xs-10" type="button" id="btnRegistrar">
+                    Quiero registrarme!
+                </button>
+            </div>
+
+            <div class="alert alert-warning" role="alert" style="display:none">
+                <button type="button" class="close" id="toggleAlert" onclick="EscondeAlertLogin()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3><div id="alertText"></div></h3>
+            </div>
+
+            
+
+        </div>
+    </body>
+</html>

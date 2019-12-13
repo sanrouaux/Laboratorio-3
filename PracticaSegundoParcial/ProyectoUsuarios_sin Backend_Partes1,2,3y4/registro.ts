@@ -2,17 +2,19 @@
 
 $(document).ready(function() {
 
-    /*$('#btnEnviar').click(function(e : any) {
-        e.preventDefault();
-        EnviarRegistro();
-    });*/
-
     $("#btnLimpiar").click(function (event: any) {
         EscondeAlertRegistro();
     }); 
 })
 
 
+/* @resumen Toma todos los datos de un nuevo usuario. Verifica que el correo no exista previamente, y en caso 
+*  de que no exista, agrega el nuevo usuario al array de usuarios. Caso contrario, informa el conflicto
+*  en un alert(BS)
+*
+* @param sin parametros
+* @return sin retorno
+*/
 function EnviarRegistro() {
     let nombre = <string>$('#nombreText').val();
     let apellido = <string>$('#apellidoText').val();
@@ -21,7 +23,6 @@ function EnviarRegistro() {
     let perfil = <string>$('#perfilText').val();
     let foto = <string>$('#fotoFile').val();
     let clave = <string>$('#claveText').val();
-
     let nombreFoto = foto.split("\\")[2];
 
     let existeUsuario : boolean = false;
@@ -36,7 +37,7 @@ function EnviarRegistro() {
             }
         } 
         if(existeUsuario == false) {
-            let nuevoUsuario = '{"correo":"'+mail+'", "clave":"'+clave+'", "nombre":"'+nombre+'", "apellido":"'+apellido+'", "legajo":"'+legajo+'", "perfil":"'+perfil+'", "foto":"./fotos/'+nombreFoto+'"}';
+            let nuevoUsuario = '{"correo":"'+mail+'", "clave":"'+clave+'", "nombre":"'+nombre+'", "apellido":"'+apellido+'", "legajo":"'+legajo+'", "perfil":"'+perfil+'", "foto":"'+nombreFoto+'"}';
             let nuevoUsuJson = JSON.parse(nuevoUsuario);
             arrayUsuarios.push(nuevoUsuJson);            
             localStorage.setItem('usuarios', JSON.stringify(arrayUsuarios));

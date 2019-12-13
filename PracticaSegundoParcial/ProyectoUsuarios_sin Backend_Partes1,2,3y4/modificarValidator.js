@@ -62,7 +62,7 @@ $(document).ready(function () {
                     },
                     file: {
                         extension: 'jpg,png',
-                        //type: 'image/jpeg,image/png',
+                        type: 'image/jpeg,image/png',
                         message: 'El archivo seleccionado no es válido!'
                     },
                 }
@@ -104,7 +104,7 @@ $(document).ready(function () {
     .on('success.form.bv', function (e) {
 
         e.preventDefault();
-        EnviarRegistro();
+        ModificarUsuario();
     });
 
 });
